@@ -1,0 +1,761 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LetterDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Dept">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Dept_Name" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Emp">
+          <Key>
+            <PropertyRef Name="Ser" />
+          </Key>
+          <Property Name="Ser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Exletter">
+          <Key>
+            <PropertyRef Name="Ser" />
+          </Key>
+          <Property Name="Ser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="noout2" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="Noletter" Type="int" />
+          <Property Name="datecome" Type="date" />
+          <Property Name="sidecome" Type="nvarchar(max)" />
+          <Property Name="dateletter" Type="date" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="respons" Type="nvarchar" MaxLength="50" />
+          <Property Name="noprevletter" Type="nvarchar" MaxLength="50" />
+          <Property Name="dateprevletter" Type="date" />
+          <Property Name="noout" Type="nvarchar" MaxLength="50" />
+          <Property Name="dateout" Type="date" />
+          <Property Name="sideout" Type="nvarchar" MaxLength="50" />
+          <Property Name="recevied" Type="nvarchar" MaxLength="50" />
+          <Property Name="notes" Type="nvarchar(max)" />
+          <Property Name="useradd" Type="nvarchar" MaxLength="50" />
+          <Property Name="dateadd" Type="datetime" />
+          <Property Name="usermod" Type="nvarchar" MaxLength="50" />
+          <Property Name="datemod" Type="datetime" />
+          <Property Name="DateMode" Type="datetime" />
+        </EntityType>
+        <EntityType Name="LetterEX">
+          <Key>
+            <PropertyRef Name="Ser" />
+          </Key>
+          <Property Name="Ser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Noletter" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="noout1" Type="int" />
+          <Property Name="datecome" Type="date" />
+          <Property Name="sidecome" Type="nvarchar(max)" />
+          <Property Name="dateletter" Type="date" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="respons" Type="nvarchar" MaxLength="50" />
+          <Property Name="noprevletter" Type="nvarchar" MaxLength="50" />
+          <Property Name="dateprevletter" Type="date" />
+          <Property Name="noout" Type="nvarchar" MaxLength="50" />
+          <Property Name="dateout" Type="date" />
+          <Property Name="sideout" Type="nvarchar" MaxLength="50" />
+          <Property Name="recevied" Type="nvarchar" MaxLength="50" />
+          <Property Name="notes" Type="nvarchar(max)" />
+          <Property Name="useradd" Type="nvarchar" MaxLength="50" />
+          <Property Name="dateadd" Type="datetime" />
+          <Property Name="usermod" Type="nvarchar" MaxLength="50" />
+          <Property Name="datemod" Type="datetime" />
+          <Property Name="DateMode" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Pass" Type="nvarchar" MaxLength="50" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MainEX">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="noletter" Type="int" Nullable="false" />
+          <Property Name="datecome" Type="date" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="sidecome" Type="nvarchar" MaxLength="50" />
+          <Property Name="dateletter" Type="date" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="respons" Type="nvarchar" MaxLength="50" />
+          <Property Name="datefolow" Type="date" />
+          <Property Name="noIn" Type="int" />
+          <Property Name="dateIn" Type="date" />
+          <Property Name="sideIn" Type="nvarchar" MaxLength="50" />
+          <Property Name="recevied" Type="nvarchar" MaxLength="50" />
+          <Property Name="notes" Type="nvarchar(max)" />
+          <Property Name="noout1" Type="nvarchar" MaxLength="50" />
+          <Property Name="dateprevletter" Type="date" />
+          <Property Name="useradd" Type="nvarchar" MaxLength="50" />
+          <Property Name="dateadd" Type="datetime" />
+          <Property Name="usermod" Type="nvarchar" MaxLength="50" />
+          <Property Name="datemod" Type="datetime" />
+          <Property Name="DateMode" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MainLetter">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="noletter" Type="int" Nullable="false" />
+          <Property Name="datecome" Type="date" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="sidecome" Type="nvarchar" MaxLength="50" />
+          <Property Name="dateletter" Type="date" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="respons" Type="nvarchar" MaxLength="50" />
+          <Property Name="Dept" Type="nvarchar" MaxLength="250" />
+          <Property Name="datefolow" Type="date" />
+          <Property Name="noout" Type="int" />
+          <Property Name="dateout" Type="date" />
+          <Property Name="sideout" Type="nvarchar" MaxLength="50" />
+          <Property Name="recevied" Type="nvarchar" MaxLength="50" />
+          <Property Name="notes" Type="nvarchar(max)" />
+          <Property Name="noout1" Type="nvarchar" MaxLength="50" />
+          <Property Name="dateprevletter" Type="date" />
+          <Property Name="useradd" Type="nvarchar" MaxLength="50" />
+          <Property Name="dateadd" Type="datetime" />
+          <Property Name="usermod" Type="nvarchar" MaxLength="50" />
+          <Property Name="datemod" Type="datetime" />
+          <Property Name="DateMode" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Side">
+          <Key>
+            <PropertyRef Name="Ser" />
+          </Key>
+          <Property Name="Ser" Type="int" Nullable="false" />
+          <Property Name="Side" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SubEX">
+          <Key>
+            <PropertyRef Name="Ser" />
+          </Key>
+          <Property Name="Ser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Noletter" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="noout1" Type="int" />
+          <Property Name="datecome" Type="date" />
+          <Property Name="sidecome" Type="nvarchar(max)" />
+          <Property Name="dateletter" Type="date" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="respons" Type="nvarchar" MaxLength="50" />
+          <Property Name="noprevletter" Type="nvarchar" MaxLength="11" />
+          <Property Name="dateprevletter" Type="date" />
+          <Property Name="noout" Type="nvarchar" MaxLength="50" />
+          <Property Name="dateout" Type="date" />
+          <Property Name="sideout" Type="nvarchar" MaxLength="50" />
+          <Property Name="recevied" Type="nvarchar" MaxLength="50" />
+          <Property Name="notes" Type="nvarchar(max)" />
+          <Property Name="useradd" Type="nvarchar" MaxLength="50" />
+          <Property Name="dateadd" Type="datetime" />
+          <Property Name="usermod" Type="nvarchar" MaxLength="50" />
+          <Property Name="datemod" Type="datetime" />
+          <Property Name="DateMode" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SubLetter">
+          <Key>
+            <PropertyRef Name="Ser" />
+          </Key>
+          <Property Name="Ser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nletter" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="noout1" Type="int" />
+          <Property Name="datecome" Type="date" />
+          <Property Name="sidecome" Type="nvarchar(max)" />
+          <Property Name="dateletter" Type="date" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="respons" Type="nvarchar" MaxLength="50" />
+          <Property Name="noprevletter" Type="nvarchar" MaxLength="11" />
+          <Property Name="dateprevletter" Type="date" />
+          <Property Name="noout" Type="nvarchar" MaxLength="50" />
+          <Property Name="dateout" Type="date" />
+          <Property Name="sideout" Type="nvarchar" MaxLength="50" />
+          <Property Name="recevied" Type="nvarchar" MaxLength="50" />
+          <Property Name="notes" Type="nvarchar(max)" />
+          <Property Name="useradd" Type="nvarchar" MaxLength="50" />
+          <Property Name="dateadd" Type="datetime" />
+          <Property Name="usermod" Type="nvarchar" MaxLength="50" />
+          <Property Name="datemod" Type="datetime" />
+          <Property Name="DateMode" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_Exletter_MainLetter1">
+          <End Role="MainLetter" Type="Self.MainLetter" Multiplicity="1" />
+          <End Role="Exletter" Type="Self.Exletter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MainLetter">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="Exletter">
+              <PropertyRef Name="noout2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LetterEX_MainEX1">
+          <End Role="MainEX" Type="Self.MainEX" Multiplicity="1" />
+          <End Role="LetterEX" Type="Self.LetterEX" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MainEX">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="LetterEX">
+              <PropertyRef Name="Noletter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubEX_MainEX1">
+          <End Role="MainEX" Type="Self.MainEX" Multiplicity="1" />
+          <End Role="SubEX" Type="Self.SubEX" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MainEX">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="SubEX">
+              <PropertyRef Name="Noletter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubLetter_MainLetter1">
+          <End Role="MainLetter" Type="Self.MainLetter" Multiplicity="1" />
+          <End Role="SubLetter" Type="Self.SubLetter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MainLetter">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="SubLetter">
+              <PropertyRef Name="Nletter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LetterDBModelStoreContainer">
+          <EntitySet Name="Dept" EntityType="Self.Dept" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Emp" EntityType="Self.Emp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Exletter" EntityType="Self.Exletter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LetterEX" EntityType="Self.LetterEX" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MainEX" EntityType="Self.MainEX" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MainLetter" EntityType="Self.MainLetter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Side" EntityType="Self.Side" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubEX" EntityType="Self.SubEX" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubLetter" EntityType="Self.SubLetter" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Exletter_MainLetter1" Association="Self.FK_Exletter_MainLetter1">
+            <End Role="MainLetter" EntitySet="MainLetter" />
+            <End Role="Exletter" EntitySet="Exletter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LetterEX_MainEX1" Association="Self.FK_LetterEX_MainEX1">
+            <End Role="MainEX" EntitySet="MainEX" />
+            <End Role="LetterEX" EntitySet="LetterEX" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubEX_MainEX1" Association="Self.FK_SubEX_MainEX1">
+            <End Role="MainEX" EntitySet="MainEX" />
+            <End Role="SubEX" EntitySet="SubEX" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubLetter_MainLetter1" Association="Self.FK_SubLetter_MainLetter1">
+            <End Role="MainLetter" EntitySet="MainLetter" />
+            <End Role="SubLetter" EntitySet="SubLetter" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LetterDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Dept">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Dept_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Emp">
+          <Key>
+            <PropertyRef Name="Ser" />
+          </Key>
+          <Property Name="Ser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Exletter">
+          <Key>
+            <PropertyRef Name="Ser" />
+          </Key>
+          <Property Name="Ser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="noout2" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Noletter" Type="Int32" />
+          <Property Name="datecome" Type="DateTime" Precision="0" />
+          <Property Name="sidecome" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="dateletter" Type="DateTime" Precision="0" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="respons" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="noprevletter" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dateprevletter" Type="DateTime" Precision="0" />
+          <Property Name="noout" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dateout" Type="DateTime" Precision="0" />
+          <Property Name="sideout" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="recevied" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="useradd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dateadd" Type="DateTime" Precision="3" />
+          <Property Name="usermod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="datemod" Type="DateTime" Precision="3" />
+          <Property Name="DateMode" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="MainLetter" Relationship="Self.FK_Exletter_MainLetter1" FromRole="Exletter" ToRole="MainLetter" />
+        </EntityType>
+        <EntityType Name="LetterEX">
+          <Key>
+            <PropertyRef Name="Ser" />
+          </Key>
+          <Property Name="Ser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Noletter" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="noout1" Type="Int32" />
+          <Property Name="datecome" Type="DateTime" Precision="0" />
+          <Property Name="sidecome" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="dateletter" Type="DateTime" Precision="0" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="respons" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="noprevletter" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dateprevletter" Type="DateTime" Precision="0" />
+          <Property Name="noout" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dateout" Type="DateTime" Precision="0" />
+          <Property Name="sideout" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="recevied" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="useradd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dateadd" Type="DateTime" Precision="3" />
+          <Property Name="usermod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="datemod" Type="DateTime" Precision="3" />
+          <Property Name="DateMode" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="MainEX" Relationship="Self.FK_LetterEX_MainEX1" FromRole="LetterEX" ToRole="MainEX" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Pass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MainEX">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="noletter" Type="Int32" Nullable="false" />
+          <Property Name="datecome" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Code" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sidecome" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dateletter" Type="DateTime" Precision="0" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="respons" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="datefolow" Type="DateTime" Precision="0" />
+          <Property Name="noIn" Type="Int32" />
+          <Property Name="dateIn" Type="DateTime" Precision="0" />
+          <Property Name="sideIn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="recevied" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="noout1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dateprevletter" Type="DateTime" Precision="0" />
+          <Property Name="useradd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dateadd" Type="DateTime" Precision="3" />
+          <Property Name="usermod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="datemod" Type="DateTime" Precision="3" />
+          <Property Name="DateMode" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="LetterEXes" Relationship="Self.FK_LetterEX_MainEX1" FromRole="MainEX" ToRole="LetterEX" />
+          <NavigationProperty Name="SubEXes" Relationship="Self.FK_SubEX_MainEX1" FromRole="MainEX" ToRole="SubEX" />
+        </EntityType>
+        <EntityType Name="MainLetter">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="noletter" Type="Int32" Nullable="false" />
+          <Property Name="datecome" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Code" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sidecome" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dateletter" Type="DateTime" Precision="0" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="respons" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Dept" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="datefolow" Type="DateTime" Precision="0" />
+          <Property Name="noout" Type="Int32" />
+          <Property Name="dateout" Type="DateTime" Precision="0" />
+          <Property Name="sideout" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="recevied" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="noout1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dateprevletter" Type="DateTime" Precision="0" />
+          <Property Name="useradd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dateadd" Type="DateTime" Precision="3" />
+          <Property Name="usermod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="datemod" Type="DateTime" Precision="3" />
+          <Property Name="DateMode" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Exletters" Relationship="Self.FK_Exletter_MainLetter1" FromRole="MainLetter" ToRole="Exletter" />
+          <NavigationProperty Name="SubLetters" Relationship="Self.FK_SubLetter_MainLetter1" FromRole="MainLetter" ToRole="SubLetter" />
+        </EntityType>
+        <EntityType Name="Side">
+          <Key>
+            <PropertyRef Name="Ser" />
+          </Key>
+          <Property Name="Ser" Type="Int32" Nullable="false" />
+          <Property Name="Side1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SubEX">
+          <Key>
+            <PropertyRef Name="Ser" />
+          </Key>
+          <Property Name="Ser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Noletter" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="noout1" Type="Int32" />
+          <Property Name="datecome" Type="DateTime" Precision="0" />
+          <Property Name="sidecome" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="dateletter" Type="DateTime" Precision="0" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="respons" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="noprevletter" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="dateprevletter" Type="DateTime" Precision="0" />
+          <Property Name="noout" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dateout" Type="DateTime" Precision="0" />
+          <Property Name="sideout" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="recevied" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="useradd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dateadd" Type="DateTime" Precision="3" />
+          <Property Name="usermod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="datemod" Type="DateTime" Precision="3" />
+          <Property Name="DateMode" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="MainEX" Relationship="Self.FK_SubEX_MainEX1" FromRole="SubEX" ToRole="MainEX" />
+        </EntityType>
+        <EntityType Name="SubLetter">
+          <Key>
+            <PropertyRef Name="Ser" />
+          </Key>
+          <Property Name="Ser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nletter" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="noout1" Type="Int32" />
+          <Property Name="datecome" Type="DateTime" Precision="0" />
+          <Property Name="sidecome" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="dateletter" Type="DateTime" Precision="0" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="respons" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="noprevletter" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="dateprevletter" Type="DateTime" Precision="0" />
+          <Property Name="noout" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dateout" Type="DateTime" Precision="0" />
+          <Property Name="sideout" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="recevied" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="useradd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dateadd" Type="DateTime" Precision="3" />
+          <Property Name="usermod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="datemod" Type="DateTime" Precision="3" />
+          <Property Name="DateMode" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="MainLetter" Relationship="Self.FK_SubLetter_MainLetter1" FromRole="SubLetter" ToRole="MainLetter" />
+        </EntityType>
+        <Association Name="FK_Exletter_MainLetter1">
+          <End Role="MainLetter" Type="Self.MainLetter" Multiplicity="1" />
+          <End Role="Exletter" Type="Self.Exletter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MainLetter">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="Exletter">
+              <PropertyRef Name="noout2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LetterEX_MainEX1">
+          <End Role="MainEX" Type="Self.MainEX" Multiplicity="1" />
+          <End Role="LetterEX" Type="Self.LetterEX" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MainEX">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="LetterEX">
+              <PropertyRef Name="Noletter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubEX_MainEX1">
+          <End Role="MainEX" Type="Self.MainEX" Multiplicity="1" />
+          <End Role="SubEX" Type="Self.SubEX" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MainEX">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="SubEX">
+              <PropertyRef Name="Noletter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubLetter_MainLetter1">
+          <End Role="MainLetter" Type="Self.MainLetter" Multiplicity="1" />
+          <End Role="SubLetter" Type="Self.SubLetter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MainLetter">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="SubLetter">
+              <PropertyRef Name="Nletter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LetterDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Depts" EntityType="Self.Dept" />
+          <EntitySet Name="Emps" EntityType="Self.Emp" />
+          <EntitySet Name="Exletters" EntityType="Self.Exletter" />
+          <EntitySet Name="LetterEXes" EntityType="Self.LetterEX" />
+          <EntitySet Name="Logins" EntityType="Self.Login" />
+          <EntitySet Name="MainEXes" EntityType="Self.MainEX" />
+          <EntitySet Name="MainLetters" EntityType="Self.MainLetter" />
+          <EntitySet Name="Sides" EntityType="Self.Side" />
+          <EntitySet Name="SubEXes" EntityType="Self.SubEX" />
+          <EntitySet Name="SubLetters" EntityType="Self.SubLetter" />
+          <AssociationSet Name="FK_Exletter_MainLetter1" Association="Self.FK_Exletter_MainLetter1">
+            <End Role="MainLetter" EntitySet="MainLetters" />
+            <End Role="Exletter" EntitySet="Exletters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LetterEX_MainEX1" Association="Self.FK_LetterEX_MainEX1">
+            <End Role="MainEX" EntitySet="MainEXes" />
+            <End Role="LetterEX" EntitySet="LetterEXes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubEX_MainEX1" Association="Self.FK_SubEX_MainEX1">
+            <End Role="MainEX" EntitySet="MainEXes" />
+            <End Role="SubEX" EntitySet="SubEXes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubLetter_MainLetter1" Association="Self.FK_SubLetter_MainLetter1">
+            <End Role="MainLetter" EntitySet="MainLetters" />
+            <End Role="SubLetter" EntitySet="SubLetters" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LetterDBModelStoreContainer" CdmEntityContainer="LetterDBEntities">
+          <EntitySetMapping Name="Depts">
+            <EntityTypeMapping TypeName="LetterDBModel.Dept">
+              <MappingFragment StoreEntitySet="Dept">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Dept_Name" ColumnName="Dept_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Emps">
+            <EntityTypeMapping TypeName="LetterDBModel.Emp">
+              <MappingFragment StoreEntitySet="Emp">
+                <ScalarProperty Name="Ser" ColumnName="Ser" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Exletters">
+            <EntityTypeMapping TypeName="LetterDBModel.Exletter">
+              <MappingFragment StoreEntitySet="Exletter">
+                <ScalarProperty Name="Ser" ColumnName="Ser" />
+                <ScalarProperty Name="noout2" ColumnName="noout2" />
+                <ScalarProperty Name="Noletter" ColumnName="Noletter" />
+                <ScalarProperty Name="datecome" ColumnName="datecome" />
+                <ScalarProperty Name="sidecome" ColumnName="sidecome" />
+                <ScalarProperty Name="dateletter" ColumnName="dateletter" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="respons" ColumnName="respons" />
+                <ScalarProperty Name="noprevletter" ColumnName="noprevletter" />
+                <ScalarProperty Name="dateprevletter" ColumnName="dateprevletter" />
+                <ScalarProperty Name="noout" ColumnName="noout" />
+                <ScalarProperty Name="dateout" ColumnName="dateout" />
+                <ScalarProperty Name="sideout" ColumnName="sideout" />
+                <ScalarProperty Name="recevied" ColumnName="recevied" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="useradd" ColumnName="useradd" />
+                <ScalarProperty Name="dateadd" ColumnName="dateadd" />
+                <ScalarProperty Name="usermod" ColumnName="usermod" />
+                <ScalarProperty Name="datemod" ColumnName="datemod" />
+                <ScalarProperty Name="DateMode" ColumnName="DateMode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LetterEXes">
+            <EntityTypeMapping TypeName="LetterDBModel.LetterEX">
+              <MappingFragment StoreEntitySet="LetterEX">
+                <ScalarProperty Name="Ser" ColumnName="Ser" />
+                <ScalarProperty Name="Noletter" ColumnName="Noletter" />
+                <ScalarProperty Name="noout1" ColumnName="noout1" />
+                <ScalarProperty Name="datecome" ColumnName="datecome" />
+                <ScalarProperty Name="sidecome" ColumnName="sidecome" />
+                <ScalarProperty Name="dateletter" ColumnName="dateletter" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="respons" ColumnName="respons" />
+                <ScalarProperty Name="noprevletter" ColumnName="noprevletter" />
+                <ScalarProperty Name="dateprevletter" ColumnName="dateprevletter" />
+                <ScalarProperty Name="noout" ColumnName="noout" />
+                <ScalarProperty Name="dateout" ColumnName="dateout" />
+                <ScalarProperty Name="sideout" ColumnName="sideout" />
+                <ScalarProperty Name="recevied" ColumnName="recevied" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="useradd" ColumnName="useradd" />
+                <ScalarProperty Name="dateadd" ColumnName="dateadd" />
+                <ScalarProperty Name="usermod" ColumnName="usermod" />
+                <ScalarProperty Name="datemod" ColumnName="datemod" />
+                <ScalarProperty Name="DateMode" ColumnName="DateMode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logins">
+            <EntityTypeMapping TypeName="LetterDBModel.Login">
+              <MappingFragment StoreEntitySet="Login">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Pass" ColumnName="Pass" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MainEXes">
+            <EntityTypeMapping TypeName="LetterDBModel.MainEX">
+              <MappingFragment StoreEntitySet="MainEX">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="noletter" ColumnName="noletter" />
+                <ScalarProperty Name="datecome" ColumnName="datecome" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="sidecome" ColumnName="sidecome" />
+                <ScalarProperty Name="dateletter" ColumnName="dateletter" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="respons" ColumnName="respons" />
+                <ScalarProperty Name="datefolow" ColumnName="datefolow" />
+                <ScalarProperty Name="noIn" ColumnName="noIn" />
+                <ScalarProperty Name="dateIn" ColumnName="dateIn" />
+                <ScalarProperty Name="sideIn" ColumnName="sideIn" />
+                <ScalarProperty Name="recevied" ColumnName="recevied" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="noout1" ColumnName="noout1" />
+                <ScalarProperty Name="dateprevletter" ColumnName="dateprevletter" />
+                <ScalarProperty Name="useradd" ColumnName="useradd" />
+                <ScalarProperty Name="dateadd" ColumnName="dateadd" />
+                <ScalarProperty Name="usermod" ColumnName="usermod" />
+                <ScalarProperty Name="datemod" ColumnName="datemod" />
+                <ScalarProperty Name="DateMode" ColumnName="DateMode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MainLetters">
+            <EntityTypeMapping TypeName="LetterDBModel.MainLetter">
+              <MappingFragment StoreEntitySet="MainLetter">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="noletter" ColumnName="noletter" />
+                <ScalarProperty Name="datecome" ColumnName="datecome" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="sidecome" ColumnName="sidecome" />
+                <ScalarProperty Name="dateletter" ColumnName="dateletter" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="respons" ColumnName="respons" />
+                <ScalarProperty Name="Dept" ColumnName="Dept" />
+                <ScalarProperty Name="datefolow" ColumnName="datefolow" />
+                <ScalarProperty Name="noout" ColumnName="noout" />
+                <ScalarProperty Name="dateout" ColumnName="dateout" />
+                <ScalarProperty Name="sideout" ColumnName="sideout" />
+                <ScalarProperty Name="recevied" ColumnName="recevied" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="noout1" ColumnName="noout1" />
+                <ScalarProperty Name="dateprevletter" ColumnName="dateprevletter" />
+                <ScalarProperty Name="useradd" ColumnName="useradd" />
+                <ScalarProperty Name="dateadd" ColumnName="dateadd" />
+                <ScalarProperty Name="usermod" ColumnName="usermod" />
+                <ScalarProperty Name="datemod" ColumnName="datemod" />
+                <ScalarProperty Name="DateMode" ColumnName="DateMode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sides">
+            <EntityTypeMapping TypeName="LetterDBModel.Side">
+              <MappingFragment StoreEntitySet="Side">
+                <ScalarProperty Name="Ser" ColumnName="Ser" />
+                <ScalarProperty Name="Side1" ColumnName="Side" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubEXes">
+            <EntityTypeMapping TypeName="LetterDBModel.SubEX">
+              <MappingFragment StoreEntitySet="SubEX">
+                <ScalarProperty Name="Ser" ColumnName="Ser" />
+                <ScalarProperty Name="Noletter" ColumnName="Noletter" />
+                <ScalarProperty Name="noout1" ColumnName="noout1" />
+                <ScalarProperty Name="datecome" ColumnName="datecome" />
+                <ScalarProperty Name="sidecome" ColumnName="sidecome" />
+                <ScalarProperty Name="dateletter" ColumnName="dateletter" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="respons" ColumnName="respons" />
+                <ScalarProperty Name="noprevletter" ColumnName="noprevletter" />
+                <ScalarProperty Name="dateprevletter" ColumnName="dateprevletter" />
+                <ScalarProperty Name="noout" ColumnName="noout" />
+                <ScalarProperty Name="dateout" ColumnName="dateout" />
+                <ScalarProperty Name="sideout" ColumnName="sideout" />
+                <ScalarProperty Name="recevied" ColumnName="recevied" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="useradd" ColumnName="useradd" />
+                <ScalarProperty Name="dateadd" ColumnName="dateadd" />
+                <ScalarProperty Name="usermod" ColumnName="usermod" />
+                <ScalarProperty Name="datemod" ColumnName="datemod" />
+                <ScalarProperty Name="DateMode" ColumnName="DateMode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubLetters">
+            <EntityTypeMapping TypeName="LetterDBModel.SubLetter">
+              <MappingFragment StoreEntitySet="SubLetter">
+                <ScalarProperty Name="Ser" ColumnName="Ser" />
+                <ScalarProperty Name="Nletter" ColumnName="Nletter" />
+                <ScalarProperty Name="noout1" ColumnName="noout1" />
+                <ScalarProperty Name="datecome" ColumnName="datecome" />
+                <ScalarProperty Name="sidecome" ColumnName="sidecome" />
+                <ScalarProperty Name="dateletter" ColumnName="dateletter" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="respons" ColumnName="respons" />
+                <ScalarProperty Name="noprevletter" ColumnName="noprevletter" />
+                <ScalarProperty Name="dateprevletter" ColumnName="dateprevletter" />
+                <ScalarProperty Name="noout" ColumnName="noout" />
+                <ScalarProperty Name="dateout" ColumnName="dateout" />
+                <ScalarProperty Name="sideout" ColumnName="sideout" />
+                <ScalarProperty Name="recevied" ColumnName="recevied" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="useradd" ColumnName="useradd" />
+                <ScalarProperty Name="dateadd" ColumnName="dateadd" />
+                <ScalarProperty Name="usermod" ColumnName="usermod" />
+                <ScalarProperty Name="datemod" ColumnName="datemod" />
+                <ScalarProperty Name="DateMode" ColumnName="DateMode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

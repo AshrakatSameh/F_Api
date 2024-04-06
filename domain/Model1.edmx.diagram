@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="486da2e4382f47e4b907e25c437f60c1" Name="Diagram1">
+        <EntityTypeShape EntityType="LetterDBModel.Dept" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LetterDBModel.Emp" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LetterDBModel.Exletter" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LetterDBModel.LetterEX" Width="1.5" PointX="8" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LetterDBModel.Login" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LetterDBModel.MainEX" Width="1.5" PointX="5.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LetterDBModel.MainLetter" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="LetterDBModel.Side" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LetterDBModel.SubEX" Width="1.5" PointX="8" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LetterDBModel.SubLetter" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <AssociationConnector Association="LetterDBModel.FK_Exletter_MainLetter1" ManuallyRouted="false" />
+        <AssociationConnector Association="LetterDBModel.FK_LetterEX_MainEX1" ManuallyRouted="false" />
+        <AssociationConnector Association="LetterDBModel.FK_SubEX_MainEX1" ManuallyRouted="false" />
+        <AssociationConnector Association="LetterDBModel.FK_SubLetter_MainLetter1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
