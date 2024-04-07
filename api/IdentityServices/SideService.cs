@@ -1,6 +1,7 @@
 ﻿using api.Dtos;
 using api.Interfaces;
 using api.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace api.IdentityServices
 {
@@ -13,29 +14,65 @@ namespace api.IdentityServices
             _context = context;
         }
 
-        public Task<Side> Add(SideDto dto)
+        public async Task<Side> Add(SideDto dto)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var side = new Side
+                {
+                    Side1 = dto.Side1
+                };
+                _context.Sides.AddAsync(side);
+                await _context.SaveChangesAsync();
+                return side;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Failed to create Side", ex);
+            }
         }
 
-        public Task<Side> Delete(int ser)
+        public async Task<Side> Delete(int ser)
         {
-            throw new NotImplementedException();
+            var side = _context.Sides.FirstOrDefault(s => s.Ser == ser);
+            if (side != null)
+            {
+                _context.Sides.Remove(side);
+                await _context.SaveChangesAsync();
+                return side;
+            }
+            return null;
         }
 
-        public Task<IEnumerable<Side>> GetAll()
+        public async Task<IEnumerable<Side>> GetAll()
         {
-            throw new NotImplementedException();
+            var side = await _context.Sides.ToListAsync();
+            return (side);
         }
 
-        public Task<Side> GetById(int ser)
+        public async Task<Side> GetById(int ser)
         {
-            throw new NotImplementedException();
+            return await _context.Sides.FirstOrDefaultAsync(m => m.Ser == ser);
         }
 
-        public Task<Side> Update(int ser, SideDto dto)
+        public async Task<Side> Update(int ser, SideDto dto)
         {
-            throw new NotImplementedException();
+            var side = await _context.Sides.FirstOrDefaultAsync(m => m.Ser == ser);
+            try
+            {
+                if (side != null)
+                {
+
+
+                    await _context.SaveChangesAsync();
+                }
+                return side;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Failed to update Side", ex);
+            }
         }
     }
 }

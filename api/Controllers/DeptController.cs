@@ -1,14 +1,8 @@
 ﻿using api.Interfaces;
 using api.Models;
-using DocumentFormat.OpenXml.Spreadsheet;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Azure.Cosmos;
-using Microsoft.Azure.Documents;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using System.Web.Providers.Entities;
+
 
 namespace api.Controllers
 {
