@@ -12,6 +12,10 @@ builder.Services.AddScoped<IDeptService, DeptService>();
 builder.Services.AddScoped<ISubLetterService, SubLetterService>();
 builder.Services.AddScoped<IExLetterService, ExLetterService>();
 builder.Services.AddScoped<IMainLetterService, MainLetterService>();
+builder.Services.AddScoped<ILetterExService, LetterExService>();
+builder.Services.AddScoped<ISubExService, SubExService>();
+builder.Services.AddScoped<IMainEx, MainExService>();
+builder.Services.AddScoped<IEmpService, EmpService>();
 
 
 builder.Services.AddControllers();
