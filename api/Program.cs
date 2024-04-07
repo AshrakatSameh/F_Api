@@ -24,6 +24,7 @@ builder.Services.AddScoped<ILetterExService, LetterExService>();
 builder.Services.AddScoped<ISubExService, SubExService>();
 builder.Services.AddScoped<IMainEx, MainExService>();
 builder.Services.AddScoped<IEmpService, EmpService>();
+builder.Services.AddScoped<ILoginService, LoginService>();
 
 
 // Configure JWT options

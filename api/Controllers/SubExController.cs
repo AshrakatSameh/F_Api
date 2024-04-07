@@ -1,5 +1,6 @@
 ﻿using api.Dtos;
 using api.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -31,6 +32,7 @@ namespace api.Controllers
         }
 
         [HttpDelete]
+        //[Authorize(Roles = "Admin")]
         public async Task <IActionResult> DeleteAllAsync(int ser)
         {
             var sub = await _service.Delete(ser);
@@ -38,6 +40,7 @@ namespace api.Controllers
         }
 
         [HttpPost]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> AddSubEx(SubExDto dto)
         {
             if (!ModelState.IsValid)
@@ -57,6 +60,7 @@ namespace api.Controllers
         }
 
         [HttpPut]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateSubEx(int ser, SubExDto dto)
         {
             if (ser != null)

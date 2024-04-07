@@ -44,7 +44,7 @@ namespace api.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create(Dept dept)
         {
             if (!ModelState.IsValid)
@@ -66,7 +66,7 @@ namespace api.Controllers
 
 
         [HttpPut("{id:int}")]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> Update(int id, Dept dept)
         {
             var existingDept = await _deptService.GetById(id);
@@ -97,7 +97,7 @@ namespace api.Controllers
 
 
         [HttpDelete("{id:int}")]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public async Task<ActionResult<Dept>> Delete(int id)
         {
            

@@ -5,28 +5,28 @@ using api.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Runtime.ConstrainedExecution;
 
 namespace api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ExLetterController : ControllerBase
+    public class LoginController : ControllerBase
     {
-        private readonly IExLetterService _exLetter;
+        private readonly ILoginService _loginService;
 
-        public ExLetterController(IExLetterService exLetter)
+        public LoginController(ILoginService loginService)
         {
-            _exLetter = exLetter;
+            _loginService = loginService;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAllAsync()
         {
-            var exLetts = await _exLetter.GetAll();
-            return Ok(exLetts);
+            var logs = await _loginService.GetAll();
+            return Ok(logs);
 
         }
+
 
         [HttpGet("{id:int}")]
 
@@ -38,63 +38,59 @@ namespace api.Controllers
 
             }
 
-            var exLetts = await _exLetter.GetById(id);
-            if (exLetts == null)
+            var logs = await _loginService.GetById(id);
+            if (logs == null)
             {
                 return BadRequest("Not Found");
             }
-            return Ok(exLetts);
+            return Ok(logs);
         }
 
-
-
         [HttpPost]
-        //[Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Create(ExLetterDto exLetter)
+        public async Task<IActionResult> AddLogin(LoginDto dto)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+            try
+            {
+                var sub = await _loginService.Add(dto);
+                return Ok(sub);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
 
-
-            var newExLetter = await _exLetter.Add(exLetter);
-            return Ok(newExLetter);
-
+            }
         }
 
-
-
-
         [HttpPut]
-        //[Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Update(int id, ExLetterDto exLetter)
+        public async Task<IActionResult> UpdateLogin(int id, LoginDto dto)
         {
             if (id != null)
             {
-                var updeted = await _exLetter.Update(id, exLetter);
+                var updeted = await _loginService.Update(id, dto);
                 return Ok(updeted);
             }
 
             return BadRequest();
         }
 
-
         [HttpDelete("{id:int}")]
-        //[Authorize(Roles = "Admin")]
-        public async Task<ActionResult<Exletter>> Delete(int id)
+        public async Task<ActionResult<Login>> Delete(int id)
         {
 
 
             try
             {
-                var exlet = await _exLetter.GetById(id);
-                if (exlet == null)
+                var Dep = await _loginService.GetById(id);
+                if (Dep == null)
                 {
                     return BadRequest("Not Found");
                 }
 
-                return await _exLetter.Delete(id);
+                return await _loginService.Delete(id);
 
             }
 
@@ -104,6 +100,5 @@ namespace api.Controllers
                    "Error deleting data");
             }
         }
-
     }
 }

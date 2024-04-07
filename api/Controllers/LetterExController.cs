@@ -1,5 +1,6 @@
 ﻿using api.Dtos;
 using api.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -31,7 +32,7 @@ namespace api.Controllers
         }
 
         [HttpPost]
-
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> AddLetterEx(LettterexDto dto)
         {
            
@@ -44,6 +45,7 @@ namespace api.Controllers
         }
 
         [HttpPut]
+        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateLetterEx(int ser , LettterexDto dto)
         {
             if (ser != null)

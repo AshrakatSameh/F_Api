@@ -7,6 +7,7 @@ using System.Runtime.ConstrainedExecution;
 using System.Threading;
 using System;
 using Microsoft.AspNetCore.Authorization;
+using api.Dtos;
 
 namespace api.Controllers
 {
@@ -30,16 +31,16 @@ namespace api.Controllers
         }
 
 
-        [HttpGet("{id:int}")]
-        public async Task<IActionResult> GetByIdAsync(int id)
+        [HttpGet("{ser}")]
+        public async Task<IActionResult> GetByIdAsync(int ser)
         {
-            if (id == null)
+            if (ser == null)
             {
                 return BadRequest("Not Found");
 
             }
 
-            var subLets = await _subLetterService.GetById(id);
+            var subLets = await _subLetterService.GetById(ser);
             if (subLets == null)
             {
                 return BadRequest("Not Found");
@@ -48,117 +49,47 @@ namespace api.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Create(SubLetter subletter)
+        //[Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Create(SubLetterDto dto)
         {
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-            var subLett = new SubLetter()
-            {
-                Ser = subletter.Ser,
-                Nletter = subletter.Nletter,
-                Noout1 = subletter.Noout1,
-                Datecome = subletter.Datecome,
-                Sidecome = subletter.Sidecome,
-                Dateletter = subletter.Dateletter,
-                Description = subletter.Description,
-                Respons = subletter.Respons,
-                Noprevletter = subletter.Noprevletter,
-                Dateprevletter = subletter.Dateprevletter,
-                Noout = subletter.Noout,
-                Dateout = subletter.Dateout,
-                Sideout = subletter.Sideout,
-                Recevied = subletter.Recevied,
-                Notes = subletter.Notes,
-                Useradd = subletter.Useradd,
-                Dateadd = subletter.Dateadd,
-                Usermod = subletter.Usermod,
-                Datemod = subletter.Datemod,
-                DateMode = subletter.DateMode,
-
-        };
-            await _subLetterService.Post(subLett);
-
-            return Ok(subLett);
-        }
-
-
-        [HttpPut("{id:int}")]
-        [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Update(int id, SubLetter subletter)
-        {
-            var existingSubLetter = await _subLetterService.GetById(id);
-
-            if (existingSubLetter == null)
-            {
-                return BadRequest("SubLetter not found");
-            }
-
             try
             {
-                existingSubLetter.Ser = subletter.Ser;
-                existingSubLetter.Nletter = subletter.Nletter;
-                existingSubLetter.Noout1 = subletter.Noout1;
-                existingSubLetter.Datecome = subletter.Datecome;
-                existingSubLetter.Sidecome = subletter.Sidecome;
-                existingSubLetter.Dateletter = subletter.Dateletter;
-                existingSubLetter.Description = subletter.Description;
-                existingSubLetter.Respons = subletter.Respons;
-                existingSubLetter.Noprevletter = subletter.Noprevletter;
-                existingSubLetter.Dateprevletter = subletter.Dateprevletter;
-                existingSubLetter.Noout = subletter.Noout;
-                existingSubLetter.Dateout = subletter.Dateout;
-                existingSubLetter.Sideout = subletter.Sideout;
-                existingSubLetter.Recevied = subletter.Recevied;
-                existingSubLetter.Notes = subletter.Notes;
-                existingSubLetter.Useradd = subletter.Useradd;
-                existingSubLetter.Dateadd = subletter.Dateadd;
-                existingSubLetter.Usermod = subletter.Usermod;
-                existingSubLetter.Datemod = subletter.Datemod;
-                existingSubLetter.DateMode = subletter.DateMode;
-
-                var updatedSubLetter = await _subLetterService.Put(existingSubLetter);
-
-                if (updatedSubLetter == null)
-                {
-                    return BadRequest("Failed to update SubLetter");
-                }
-
-                return Ok(updatedSubLetter);
+                var sub = await _subLetterService.AddAsync(dto);
+                return Ok(sub);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, "An error occurred while updating SubLetter");
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+
             }
         }
 
 
-        [HttpDelete("{id:int}")]
-        [Authorize(Roles = "Admin")]
+        [HttpPut]
+        public async Task<IActionResult> Update(int ser, SubLetterDto subletter)
+        {
+            if ( ser != null)
+            {
+                var updeted = await _subLetterService.Update(ser, subletter);
+                return Ok(updeted);
+            }
+
+            return BadRequest();
+        }
+
+
+        [HttpDelete]
+        //[Authorize(Roles = "Admin")]
         public async Task<ActionResult<SubLetter>> Delete(int id)
         {
 
-
-            try
-            {
-                var subLett = await _subLetterService.GetById(id);
-                if (subLett == null)
-                {
-                    return BadRequest("Not Found");
-                }
-
-                return await _subLetterService.Delete(id);
-
-            }
-
-            catch (Exception)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                   "Error deleting data");
-            }
+            var sub = await _subLetterService.Delete(id);
+            return Ok(sub);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using api.Models;
+﻿using api.Dtos;
+using api.Models;
 
 namespace api.Interfaces
 {
@@ -8,10 +9,10 @@ namespace api.Interfaces
 
         Task<Exletter> GetById(int id);
 
-        Task<Exletter> Post(Exletter exLetter);
+        Task<Exletter> Add(ExLetterDto dto);
 
 
-        Task<Exletter> Put(Exletter exLetter);
+        Task<Exletter> Update(int ser, ExLetterDto dto);
 
 
         Task<Exletter> Delete(int id);
