@@ -1,6 +1,7 @@
 ﻿using api.IdentityServices;
 using api.Interfaces;
 using api.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -46,6 +47,7 @@ namespace api.Controllers
 
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create(Exletter exLetter)
         {
             if (!ModelState.IsValid)
@@ -87,6 +89,7 @@ namespace api.Controllers
 
 
         [HttpPut("{id:int}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Update(int id, Exletter exLetter)
         {
             var existingexLetter = await _exLetter.GetById(id);
@@ -136,6 +139,7 @@ namespace api.Controllers
 
 
         [HttpDelete("{id:int}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<Exletter>> Delete(int id)
         {
 

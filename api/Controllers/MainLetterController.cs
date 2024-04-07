@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading;
 using System;
+using Microsoft.AspNetCore.Authorization;
 
 namespace api.Controllers
 {
@@ -44,6 +45,7 @@ namespace api.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create(MainLetter mainLetter)
         {
             if (!ModelState.IsValid)
@@ -85,6 +87,7 @@ namespace api.Controllers
         }
 
         [HttpPut("{id:int}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Update(int id, MainLetter mainLetter)
         {
             var existingMainLetter = await _mainLetter.GetById(id);
@@ -137,6 +140,7 @@ namespace api.Controllers
 
 
         [HttpDelete("{id:int}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<MainLetter>> Delete(int id)
         {
 

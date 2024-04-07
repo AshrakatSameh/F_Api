@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Runtime.ConstrainedExecution;
 using System.Threading;
 using System;
+using Microsoft.AspNetCore.Authorization;
 
 namespace api.Controllers
 {
@@ -30,7 +31,6 @@ namespace api.Controllers
 
 
         [HttpGet("{id:int}")]
-
         public async Task<IActionResult> GetByIdAsync(int id)
         {
             if (id == null)
@@ -48,6 +48,7 @@ namespace api.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create(SubLetter subletter)
         {
             if (!ModelState.IsValid)
@@ -86,6 +87,7 @@ namespace api.Controllers
 
 
         [HttpPut("{id:int}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Update(int id, SubLetter subletter)
         {
             var existingSubLetter = await _subLetterService.GetById(id);
@@ -135,6 +137,7 @@ namespace api.Controllers
 
 
         [HttpDelete("{id:int}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<SubLetter>> Delete(int id)
         {
 
