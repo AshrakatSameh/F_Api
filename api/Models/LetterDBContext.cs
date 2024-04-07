@@ -29,6 +29,7 @@ namespace api
         public virtual DbSet<SubEx> Subices { get; set; } = null!;
         public virtual DbSet<SubLetter> SubLetters { get; set; } = null!;
         public virtual DbSet<ViewEx> Viewices { get; set; } = null!;
+        public virtual DbSet<User> UserInfo { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

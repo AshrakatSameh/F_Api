@@ -1,8 +1,14 @@
 ﻿using api.Interfaces;
 using api.Models;
+using DocumentFormat.OpenXml.Spreadsheet;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.Cosmos;
+using Microsoft.Azure.Documents;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using System.Web.Providers.Entities;
 
 namespace api.Controllers
 {
@@ -26,7 +32,7 @@ namespace api.Controllers
         }
 
         [HttpGet("{id:int}")]
-       
+
         public async Task<IActionResult> GetByIdAsync(int id)
         {
             if (id == null)
@@ -44,6 +50,7 @@ namespace api.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create(Dept dept)
         {
             if (!ModelState.IsValid)
@@ -65,6 +72,7 @@ namespace api.Controllers
 
 
         [HttpPut("{id:int}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Update(int id, Dept dept)
         {
             var existingDept = await _deptService.GetById(id);
@@ -95,6 +103,7 @@ namespace api.Controllers
 
 
         [HttpDelete("{id:int}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<Dept>> Delete(int id)
         {
            
